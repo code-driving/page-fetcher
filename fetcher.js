@@ -3,7 +3,6 @@
 const request = require("request");
 const fs = require("fs");
 const readline = require("readline");
-// const { on } = require("node:events");
 const args = process.argv.slice(2);
 const URL = args[0];
 const localFilePath = args[1];
@@ -23,21 +22,19 @@ const getDataSize = (data) => {
 const getResponse = (url) => {
   request(url, (error, response, receivedData) => {
     // if (error) throw error;
-
     try {
-      fs.writeFile(localFilePath, receivedData, { encoding: "utf8" }, (error) => {
-        if (error) throw error;
-        if (response.statusCode !== 200) {
-          console.log("Sorry. Connection was interrupted");
-        }
+      fs.writeFile(localFilePath, receivedData, { encoding: "utf8" }, () => {
+        console.log(
+          `Downloaded and saved ${getDataSize(
+            receivedData
+          )} bytes to ${localFilePath}`
+        );
       });
-      console.log(
-        `Downloaded and saved ${getDataSize(
-          receivedData
-        )} bytes to ${localFilePath}`
-      );
     } catch (error) {
-      console.log(error)
+      if (error) throw error;
+      if (response.statusCode !== 200) {
+        console.log("Sorry. Connection was interrupted");
+      }
     }
   });
 };
