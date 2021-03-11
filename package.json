@@ -1,0 +1,22 @@
+{
+  "name": "page-fetcher",
+  "version": "1.0.0",
+  "description": "page downloader",
+  "main": "fetcher.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code-driving/page-fetcher.git"
+  },
+  "author": "Tetyana Titovets",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/code-driving/page-fetcher/issues"
+  },
+  "homepage": "https://github.com/code-driving/page-fetcher#readme",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
